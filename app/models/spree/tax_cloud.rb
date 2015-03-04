@@ -41,11 +41,14 @@ module Spree
     def self.cart_item_from_item(item, index)
       if item.class.name.demodulize == "LineItem"
         line_item = item
+
+        # DAN TODO: Promo Total for line item is across entire qty of item if qty > 1; trusting here ppl only buy 1 of each item!
+
         ::TaxCloud::CartItem.new(
         index:      index,
         item_id:    line_item.try(:variant).try(:sku).present? ? line_item.try(:variant).try(:sku) : ("LineItem " + line_item.id.to_s),
         tic:        (line_item.product.tax_cloud_tic || Spree::Config.taxcloud_default_product_tic),
-        price:      line_item.price,
+        price:      line_item.price + line_item.promo_total,
         quantity:   line_item.quantity
         )
 
