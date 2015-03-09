@@ -15,7 +15,11 @@ describe 'Checkout', js: true do
     return zone
   end
 
+<<<<<<< HEAD
   let!(:uk) { create(:country, name: "United Kingdom", states_required: false, iso_name: "UNITED KINGDOM", iso: "UK", iso3: "GBR", numcode: 826) }
+=======
+  let!(:uk) { create(:country, name: "United Kingdom", :states_required => false, iso_name: "UNITED KINGDOM", iso: "UK", iso3: "GBR", numcode: 826) }
+>>>>>>> 2-2-stable
   let!(:uk_address) { create(:address, country: uk, state: nil, zipcode: "SW1A 1AA") }
   let!(:non_us_zone) do
     zone = create(:zone, name: "Rest of the world")
@@ -190,7 +194,11 @@ describe 'Checkout', js: true do
     click_button "Save and Continue"
 
     page.should have_content("Sales Tax $0.76")
+<<<<<<< HEAD
     page.should have_content("Order Total: $30.76")
+=======
+    page.should have_content("Order Total: $20.76")
+>>>>>>> 2-2-stable
     page.should_not have_content("Address Verification Failed")
     click_button "Save and Continue"
 
@@ -251,7 +259,11 @@ describe 'Checkout', js: true do
     click_button "Save and Continue"
 
     page.should have_content("Sales Tax $0.80")
+<<<<<<< HEAD
     page.should have_content("Order Total: $20.80")
+=======
+    page.should have_content("Order Total: $10.80")
+>>>>>>> 2-2-stable
     page.should_not have_content("Address Verification Failed")
     click_button "Save and Continue"
 

@@ -19,7 +19,11 @@ Spree Configuration
 
 Add the extension to your Gemfile:
 
+<<<<<<< HEAD
     gem 'spree_tax_cloud', github: 'spree-contrib/spree_tax_cloud', branch: 'master'
+=======
+    gem 'spree_tax_cloud', github: 'spree-contrib/spree_tax_cloud', branch: '2-2-stable'
+>>>>>>> 2-2-stable
     
 And add it to your bundle:
 
@@ -34,6 +38,7 @@ In the Admin section of Spree, go to Configuration, then select TaxCloud Setting
 Enter your `api_login_id` and `api_key`, and optionally your USPS login. You can also configure the default Product TIC and Shipping TIC for TaxCloud to use, although it is recommended to leave the defaults as is: `00000` for product default and `11010` for shipping default.
 
 All Products will default to the default product TIC specified here unless they are given an explicit value. Specific product-level TICs may be specified per-product in the Products section of the Spree admin backend. If you are uncertain about the correct TIC for a product (whether it be clothing, books, etc.), taxability code information may be obtained from [Tax Cloud](https://taxcloud.net/tic/default.aspx).
+<<<<<<< HEAD
 
 To complete your Spree::TaxCloud configuration, you will need to create a TaxRate to apply rates obtained from Tax Cloud to your Spree LineItems and Shipments. Under Configuration select Tax Rates, and click Create a New Tax Rate. Recommended defaults are as follows:
 
@@ -45,6 +50,19 @@ To complete your Spree::TaxCloud configuration, you will need to create a TaxRat
 - Show Rate in Label: `False` (We will not display the static rate, which is left at `0%`)
 - Calculator: `Tax Cloud`
 
+=======
+
+To complete your Spree::TaxCloud configuration, you will need to create a TaxRate to apply rates obtained from Tax Cloud to your Spree LineItems and Shipments. Under Configuration select Tax Rates, and click Create a New Tax Rate. Recommended defaults are as follows:
+
+- Name: `Sales Tax` (This label will be visible to users during the checkout process)
+- Zone: `USA` (Note that TaxCloud is only designed for United States sales tax)
+- Rate: `0.0` (Note that the actual rates will be applied by the calculator)
+- Tax Category: `Taxable`
+- Included in Price: `False` (US taxes are 'additional' rather than 'included')
+- Show Rate in Label: `False` (We will not display the static rate, which is left at `0%`)
+- Calculator: `Tax Cloud`
+
+>>>>>>> 2-2-stable
 Notes
 ------------------------
 
@@ -59,9 +77,13 @@ Some work on the Spree:TaxCloud extension is ongoing. Namely:
 
 - [x] Fill out a more complete set of feature specs using the test case scenarios provided by Tax Cloud.
 
+<<<<<<< HEAD
 - [ ] Address Validation: Support an address validation step via the Tax Cloud gem (which will fix the one non-passing spec at the moment).
 
 - [ ] Split Shipments: Scope Tax Cloud transactions to Shipments rather than Orders, to account for the unusual cases where sales tax depends on the origin address as well as, or instead of, the destination address.
+=======
+- [ ] Scope Tax Cloud transactions to Shipments rather than Orders, to account for the unusual cases where sales tax depends on the origin address as well as, or instead of, the destination address.
+>>>>>>> 2-2-stable
 
 - [ ] Item Returns: Create feature specs and make the appropriate API calls to properly process sales tax on item returns.
 

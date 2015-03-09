@@ -39,7 +39,10 @@ module Spree
     end
 
     def self.cart_item_from_item(item, index)
-      if item.class.name.demodulize == "LineItem"
+
+      # DAN TODO: Promo Total for line item is across entire qty of item if qty > 1; trusting here ppl only buy 1 of each item!
+
+    if item.class.name.demodulize == "LineItem"
         line_item = item
 
         # DAN TODO: Promo Total for line item is across entire qty of item if qty > 1; trusting here ppl only buy 1 of each item!
